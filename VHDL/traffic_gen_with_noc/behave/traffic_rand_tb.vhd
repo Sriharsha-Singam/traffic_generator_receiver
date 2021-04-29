@@ -33,17 +33,18 @@ constant cnt_inj_time_text       : string := "data/rand/injection_time.txt";
 constant cnt_packet_length_text  : string := "data/rand/packet_header_length.txt";
 constant cnt_image_2_flits_text  : string := "data/rand/data_header.txt";
 constant cnt_inj_time_2_noc_text : string := "data/rand/inj_time_2_noc.txt";
+constant clk_period: time := 1000 ns; 
 
 -------------------------------------------------------------------
 
 signal clk : std_logic := '0';
 signal rst : std_logic := RST_LVL;
-signal local_rx : flit_vector(48-1 downto 0) := (others => (others => '0'));
-signal local_vc_write_rx: std_logic_vector(192-1 downto 0) := (others => '0');
-signal local_incr_rx_vec: std_logic_vector(192-1 downto 0) := (others => '0');
-signal local_tx : flit_vector(48-1 downto 0);
-signal local_vc_write_tx : std_logic_vector(192-1 downto 0);
-signal local_incr_tx_vec : std_logic_vector(192-1 downto 0);
+signal local_rx : flit_vector(64-1 downto 0) := (others => (others => '0'));
+signal local_vc_write_rx: std_logic_vector(256-1 downto 0) := (others => '0');
+signal local_incr_rx_vec: std_logic_vector(256-1 downto 0) := (others => '0');
+signal local_tx : flit_vector(64-1 downto 0);
+signal local_vc_write_tx : std_logic_vector(256-1 downto 0);
+signal local_incr_tx_vec : std_logic_vector(256-1 downto 0);
 
 -------------------------------------------------------------------
 --------------------- Component declaration -----------------------
@@ -67,12 +68,12 @@ end component traffic_rec;
 component full_noc is
 port(
   clk, rst          : in  std_logic;
-  local_rx          : in  flit_vector(48-1 downto 0);
-  local_vc_write_rx : in  std_logic_vector(192-1 downto 0);
-  local_incr_rx_vec : in  std_logic_vector(192-1 downto 0);
-  local_tx          : out flit_vector(48-1 downto 0);
-  local_vc_write_tx : out std_logic_vector(192-1 downto 0);
-  local_incr_tx_vec : out std_logic_vector(192-1 downto 0)
+  local_rx          : in  flit_vector(64-1 downto 0);
+  local_vc_write_rx : in  std_logic_vector(256-1 downto 0);
+  local_incr_rx_vec : in  std_logic_vector(256-1 downto 0);
+  local_tx          : out flit_vector(64-1 downto 0);
+  local_vc_write_tx : out std_logic_vector(256-1 downto 0);
+  local_incr_tx_vec : out std_logic_vector(256-1 downto 0)
   );
 end component full_noc;
 

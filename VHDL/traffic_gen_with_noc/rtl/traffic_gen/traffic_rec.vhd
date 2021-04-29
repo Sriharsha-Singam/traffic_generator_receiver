@@ -38,6 +38,8 @@ architecture behave of traffic_rec is
 file rec_time : text open write_mode is rec_time_text;
 file rec_data : text open write_mode is rec_data_text;
 
+constant clk_period: time := 1000 ns; 
+
 begin
 
 -- Set increment

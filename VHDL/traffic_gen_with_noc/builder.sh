@@ -1,3 +1,7 @@
+#!/bin/tcsh
+
+source /tools/mentor/questa/q20191/cshrc.questa
+
 vlib noc_lib
 vmap work noc_lib
 vmap
@@ -27,10 +31,3 @@ vlog gate/router_fast_110_T=10.0_TECH=tcbn40lptc.v
 vcom -check_synthesis rtl/full_noc.vhd
 vcom behave/traffic_rand_tb.vhd
 vcom behave/traffic_corr_tb.vhd
-
-vsim work.traffic_rand_tb -t ps -sdftyp /full_noc_comp/router_110=./gate/router_fast_110_T=10.0_TECH=tcbn40lptc.sdf
-
-add wave -position insertpoint  \
-sim:/traffic_rand_tb/*
-
-run 650 us

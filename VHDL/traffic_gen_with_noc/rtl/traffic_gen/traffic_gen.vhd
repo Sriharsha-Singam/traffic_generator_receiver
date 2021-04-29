@@ -70,6 +70,8 @@ file packet_length  : text open read_mode is packet_length_text;
 file image_2_flits  : text open read_mode is image_2_flits_text;
 file inj_time_2_noc : text open write_mode is inj_time_2_noc_text;
 
+constant clk_period: time := 1000 ns; 
+
 begin
 
 -------------------------------------------------------------------
